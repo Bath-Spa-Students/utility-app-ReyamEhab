@@ -43,7 +43,7 @@ class VendingMachine:
         # Iterate through items in the specified category and display their details
         for code, item in self.menu[category].items():
             print(f"{code}: {item['name']} - 💵 {item['price']:.2f} (Qty: {item['quantity']})")
-        print("\nYour current balance: 💵 {:.2f}".format(self.balance))
+        print("""\nＹｏｕｒ ｃｕｒｒｅｎｔ ｂａｌａｎｃｅ: 💵 {:.2f}""".format(self.balance))
 
 
     # Define a method to insert money into the vending machine
@@ -51,10 +51,10 @@ class VendingMachine:
         while True:
             try:
                 # Prompt the user to input the amount of money
-                amount = float(input("Insert money (enter 0 to cancel): 💵"))
+                amount = float(input("""Ｉｎｓｅｒｔ ｍｏｎｅｙ (ｅｎｔｅｒ ０ ｔｏ ｃａｎｃｅｌ): 💵"""))
                 # Check if the amount is positive
                 if amount < 0:
-                    print("Please enter a positive amount.")
+                    print("""Ｐｌｅａｓｅ ｅｎｔｅｒ ａ ｐｏｓｉｔｉｖｅ ａｍｏｕｎｔ.""")
                 # Check if the user wants to cancel the operation
                 elif amount == 0:
                     break
@@ -78,10 +78,10 @@ class VendingMachine:
                 # Update the balance, reduce the quantity, and inform the user of the successful purchase
                 self.balance -= item['price']
                 item['quantity'] -= 1
-                print("You've successfully purchased {}. Enjoy!".format(item['name']))
+                print("""Ｙｏｕ'ｖｅ ｓｕｃｃｅｓｓｆｕｌｌｙ ｐｕｒｃｈａｓｅｄ {}. Enjoy!""".format(item['name']))
             # If the item is out of stock, inform the user
             elif item['quantity'] == 0:
-                print(" 😢 Sorry, {} is out of stock.".format(item['name']))
+                print(""" 😢 Ｓｏｒｒｙ, {} ｉｓ ｏｕｔ ｏｆ ｓｔｏｃｋ.""".format(item['name']))
             # If the balance is insufficient, prompt the user to insert more money
             else:
                 print("Insufficient funds. Please insert more money.❌ ")
@@ -94,16 +94,16 @@ class VendingMachine:
     def start(self):
         while True:
             # Display the category options to the user
-            print("Select category:")
-            print("1. Drinks ☕ ")
-            print("2. Snacks 🍫 ")
-            print("3. Soft drinks 🥤 ")
-            print("Enter 'exit' to end.")
+            print("""Ｓｅｌｅｃｔ ｃａｔｅｇｏｒｙ:""")
+            print("""１. Ｄｒｉｎｋｓ ☕ """)
+            print("""２. Ｓｎａｃｋｓ 🍫 """)
+            print("""３. Ｓｏｆｔ ｄｒｉｎｋｓ 🥤 """)
+            print("""Ｅｎｔｅｒ 'ｅｘｉｔ' ｔｏ ｅｎｄ.""")
             # Prompt the user to enter their choice
-            choice = input("Enter your choice (1, 2, 3 or 'exit'): ")
+            choice = input("Ｅｎｔｅｒ ｙｏｕｒ ｃｈｏｉｃｅ (１, ２, ３ ｏｒ 'ｅｘｉｔ'): ")
             # Check the user's choice and set the category accordingly
             if choice.lower() == 'exit':
-                print("Thank you for using the Creative Vending Machine. Have a great day! 👋 ")
+                print("""𝚃𝚑𝚊𝚗𝚔 𝚢𝚘𝚞 𝚏𝚘𝚛 𝚞𝚜𝚒𝚗𝚐 𝚝𝚑𝚎 𝙲𝚛𝚎𝚊𝚝𝚒𝚟𝚎 𝚅𝚎𝚗𝚍𝚒𝚗𝚐 𝙼𝚊𝚌𝚑𝚒𝚗𝚎. 𝙷𝚊𝚟𝚎 𝚊 𝚐𝚛𝚎𝚊𝚝 𝚍𝚊𝚢! 👋 """)
                 break
             elif choice == '1':
                 category = 'drinks ☕ '
@@ -132,7 +132,6 @@ if __name__ == "__main__":
     vending_machine = VendingMachine()
     # Start the vending machine
     vending_machine.start()
-
 
 
 
